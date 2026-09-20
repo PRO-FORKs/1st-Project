@@ -1,11 +1,12 @@
 label junior_route_start:
     scene bg university_common
-    show junior_sheet at sheet_fit
+    show junior fullbody_default at fullbody_fit
     with fade
 
     narrator "【유나 루트】"
     junior "선배는 제가 왜 여기 온 건지 정말 모르세요?"
     p "설마 나 때문이라고 하려는 건 아니지?"
+    show junior fullbody_shy at fullbody_fit
     junior "그 설마가 맞아요."
 
     menu:
@@ -13,23 +14,28 @@ label junior_route_start:
             $ junior_reassurance += 1
             $ junior_affection += 10
             p "과거 때문에 책임지는 척은 안 할게. 대신 지금부터 제대로 볼게."
+            show junior fullbody_flustered at fullbody_fit
             junior "...그 말, 취소하면 안 돼요."
 
         "부담스럽다고 거리를 둔다.":
             p "그건 좀... 무겁다."
+            show junior fullbody_hurt at fullbody_fit
             junior "그렇죠. 선배한테는."
 
+    show junior fullbody_jealousy at fullbody_fit
     narrator "며칠 뒤 유나는 하린과의 관계를 조심스럽게 캐묻기 시작했다."
 
     menu:
         "불안하면 직접 물어보라고 하고 관계를 명확히 한다.":
             $ junior_reassurance += 1
             p "혼자 추측하지 마. 궁금하면 나한테 물어봐."
+            show junior fullbody_shy at fullbody_fit
             junior "그럼... 저만 좋아한다고 말해 주세요."
             p "그래."
 
         "괜히 싸우기 싫어 대답을 피한다.":
             p "그런 것까지 설명해야 해?"
+            show junior fullbody_anger at fullbody_fit
             junior "...알겠어요. 제가 알아서 할게요."
 
     if junior_reassurance >= 4:
@@ -39,8 +45,9 @@ label junior_route_start:
 
 label junior_happy:
     scene bg university_common
-    show junior_sheet at sheet_fit
+    show junior fullbody_default at fullbody_fit
     narrator "도서관 폐관 방송이 나온 뒤."
+    show junior fullbody_joy at fullbody_fit
     junior "예전에는 선배를 따라오기만 했어요."
     p "이제는?"
     junior "옆에서 갈래요."

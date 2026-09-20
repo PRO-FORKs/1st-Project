@@ -1,11 +1,12 @@
 label friend_route_start:
     scene bg university_common
-    show friend_sheet at sheet_fit
+    show friend fullbody_default at fullbody_fit
     with fade
 
     narrator "【하린 루트】"
     friend "요즘 너 나랑 자주 다니네."
     p "싫어?"
+    show friend fullbody_surprise at fullbody_fit
     friend "아니. 그래서 물어본 거야."
 
     menu:
@@ -13,22 +14,27 @@ label friend_route_start:
             $ friend_courage += 1
             $ friend_affection += 10
             p "난 너 그냥 친구로만 보는 거 아니야."
+            show friend fullbody_flustered at fullbody_fit
             friend "...그걸 이제 말하냐."
 
         "괜히 분위기를 망치기 싫어 농담으로 넘긴다.":
             p "복학생 챙겨주는 착한 친구니까 붙어 다니는 거지."
+            show friend fullbody_sadness at fullbody_fit
             friend "그래. 친구니까."
 
+    show friend fullbody_jealousy at fullbody_fit
     narrator "며칠 뒤 하린은 다른 학교 선배에게 연락이 왔다고 말했다."
 
     menu:
         "오늘은 나와 있어 달라고 말한다.":
             $ friend_courage += 1
             p "오늘은 그 사람 말고 나랑 있어."
+            show friend fullbody_flustered at fullbody_fit
             friend "그거... 무슨 뜻인지 알고 하는 말이지?"
 
         "선택은 하린 몫이라며 보내준다.":
             p "네가 만나고 싶으면 만나."
+            show friend fullbody_sadness at fullbody_fit
             friend "응. 그럼 다녀올게."
 
     if friend_courage >= 4:
@@ -38,10 +44,12 @@ label friend_route_start:
 
 label friend_happy:
     scene bg university_common
-    show friend_sheet at sheet_fit
+    show friend fullbody_default at fullbody_fit
     narrator "축제가 끝난 늦은 밤."
+    show friend fullbody_joy at fullbody_fit
     friend "군대 가기 전에도 이 말 기다렸는데."
     p "그때는 몰랐어."
+    show friend fullbody_flustered at fullbody_fit
     friend "그럼 지금부터 갚아. 오래 걸렸으니까."
     $ ending_seen = "friend_happy"
     centered "HARIN HAPPY END\n친구 다음의 이름"
