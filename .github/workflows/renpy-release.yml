@@ -31,10 +31,12 @@ jobs:
 
       - name: Create Release
         env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release create "${GITHUB_REF_NAME}" \
-            dist/* \
-            --verify-tag \
-            --generate-notes \
-            --title "${GITHUB_REF_NAME}"
+          RENPY_VERSION: "8.5.3"
+
+        steps:
+          - uses: actions/checkout@v4
+
+          - name: Download Ren'Py
+            run: |
+              wget "https://www.renpy.org/dl/${RENPY_VERSION}/renpy-${RENPY_VERSION}-sdk.tar.bz2"
+              tar -xjf "renpy-${RENPY_VERSION}-sdk.tar.bz2"
