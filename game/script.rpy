@@ -1,17 +1,12 @@
-﻿# 이 파일에 게임 스크립트를 입력합니다.
+# Main entry point
 
-# image 문을 사용해 이미지를 정의합니다.
-# image eileen happy = "eileen_happy.png"
-
-# 게임에서 사용할 캐릭터를 정의합니다.
-define e = Character('아이린', color="#c8ffc8")
-
-
-# 여기에서부터 게임이 시작합니다.
 label start:
+    scene bg university_common
+    with fade
 
-    e "새로운 렌파이 게임을 만들었군요."
+    centered "복학생의 가을\nPrototype v0.1.3"
 
-    e "이야기와 그림, 음악을 더하면 여러분의 게임을 세상에 배포할 수 있어요!"
+    narrator "군 전역 후 복학한 스물셋의 가을."
+    narrator "끊겨 있던 학교생활은 세 사람과 다시 이어지기 시작한다."
 
-    return
+    jump common_day1
