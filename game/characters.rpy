@@ -15,6 +15,9 @@ image junior_sheet = "images/heroine3/character_sheet.png"
 image older_fullbody_joy = "images/heroine1/fullbody_joy.png"
 image friend_fullbody_joy = "images/heroine2/fullbody_joy.png"
 image junior_fullbody_joy = "images/heroine3/fullbody_joy.png"
+image older_fullbody_default = "images/heroine1/fullbody_default.png"
+image friend_fullbody_default = "images/heroine2/fullbody_default.png"
+image junior_fullbody_default = "images/heroine3/fullbody_default.png"
 image bg university_common = "images/bg_university_morning.png"
 
 transform sheet_fit:
@@ -24,5 +27,5 @@ transform sheet_fit:
 
 transform fullbody_fit:
     xalign 0.5
-    yalign 1.0
-    zoom 0.86
+    yalign 0.95
+    zoom 0.62
