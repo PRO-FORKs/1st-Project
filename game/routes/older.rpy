@@ -1,11 +1,13 @@
 label older_route_start:
     scene bg university_common
-    show older_sheet at sheet_fit
+    show older fullbody_default at fullbody_fit
     with fade
 
     narrator "【서윤 루트】"
+    show older fullbody_sadness at fullbody_fit
     older "저번에는... 죄송했어요."
     p "교수님이 찾는다고 한 거요?"
+    show older fullbody_hurt at fullbody_fit
     older "네. 그때는 그냥... 도망가고 싶어서."
 
     menu:
@@ -13,22 +15,27 @@ label older_route_start:
             $ older_trust += 1
             $ older_affection += 10
             p "말하기 싫으면 지금 안 해도 돼요."
+            show older fullbody_shy at fullbody_fit
             older "그렇게 말하면 더 미안해지는데..."
 
         "내가 싫어서 그런 건지 확답을 요구한다.":
             p "저 싫어서 그런 거였어요?"
+            show older fullbody_flustered at fullbody_fit
             older "아니에요. 그 반대라서... 더 문제였어요."
 
+    show older fullbody_sadness at fullbody_fit
     narrator "며칠 뒤, 서윤은 계약이 끝나면 학교를 떠날 생각이라고 말했다."
 
     menu:
         "떠나기 전에 관계를 분명하게 하고 싶다고 말한다.":
             $ older_trust += 1
             p "조교님이 떠나는 것과 제가 좋아하는 건 별개잖아요."
+            show older fullbody_flustered at fullbody_fit
             older "...그런 말을 그렇게 바로 해도 되는 거예요?"
 
         "부담스러울까 봐 아무 말도 하지 않는다.":
             p "그렇군요."
+            show older fullbody_sadness at fullbody_fit
             older "네."
 
     if older_trust >= 4:
@@ -38,8 +45,9 @@ label older_route_start:
 
 label older_happy:
     scene bg university_common
-    show older_sheet at sheet_fit
+    show older fullbody_default at fullbody_fit
     narrator "학교 근처 편의점 앞. 늦은 저녁."
+    show older fullbody_joy at fullbody_fit
     older "저 오늘은 안 도망갔어요."
     p "알아요."
     older "앞으로도... 연습해 볼게요."
