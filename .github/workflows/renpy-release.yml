@@ -10,7 +10,6 @@ permissions:
 
 env:
   RENPY_VERSION: "8.5.3"
-  PROJECT_PATH: "."
 
 jobs:
   build:
@@ -26,10 +25,11 @@ jobs:
 
       - name: Build
         run: |
-          mkdir -p dist
+          mkdir -p "$GITHUB_WORKSPACE/dist"
 
-          "./renpy-${RENPY_VERSION}-sdk/renpy.sh" launcher distribute \
-            "$GITHUB_WORKSPACE/$PROJECT_PATH" \
+          cd "$GITHUB_WORKSPACE/renpy-${RENPY_VERSION}-sdk"
+
+          ./renpy.sh launcher distribute "$GITHUB_WORKSPACE" \
             --destination "$GITHUB_WORKSPACE/dist" \
             --package pc \
             --package mac
@@ -39,7 +39,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            dist/* \
+            "$GITHUB_WORKSPACE"/dist/* \
             --verify-tag \
             --generate-notes \
             --title "${GITHUB_REF_NAME}"
