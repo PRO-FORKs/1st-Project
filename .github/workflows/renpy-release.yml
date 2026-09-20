@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+env:
+  RENPY_VERSION: "8.5.3"
+  PROJECT_PATH: "."
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,26 +21,25 @@ jobs:
 
       - name: Download Ren'Py
         run: |
-          wget https://www.renpy.org/dl/8.5.4/renpy-8.5.4-sdk.tar.bz2
-          tar -xjf renpy-8.5.4-sdk.tar.bz2
+          wget "https://www.renpy.org/dl/${RENPY_VERSION}/renpy-${RENPY_VERSION}-sdk.tar.bz2"
+          tar -xjf "renpy-${RENPY_VERSION}-sdk.tar.bz2"
 
       - name: Build
         run: |
           mkdir -p dist
 
-          ./renpy-8.5.4-sdk/renpy.sh launcher distribute "$GITHUB_WORKSPACE" \
+          "./renpy-${RENPY_VERSION}-sdk/renpy.sh" launcher distribute \
+            "$GITHUB_WORKSPACE/$PROJECT_PATH" \
             --destination "$GITHUB_WORKSPACE/dist" \
             --package pc \
             --package mac
 
-      - name: Create Release
+      - name: Create GitHub Release
         env:
-          RENPY_VERSION: "8.5.3"
-
-        steps:
-          - uses: actions/checkout@v4
-
-          - name: Download Ren'Py
-            run: |
-              wget "https://www.renpy.org/dl/${RENPY_VERSION}/renpy-${RENPY_VERSION}-sdk.tar.bz2"
-              tar -xjf "renpy-${RENPY_VERSION}-sdk.tar.bz2"
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            dist/* \
+            --verify-tag \
+            --generate-notes \
+            --title "${GITHUB_REF_NAME}"
