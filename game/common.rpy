@@ -1,10 +1,10 @@
 label common_day1:
-    scene black
+    scene bg university_common
     narrator "【월요일 / 복학 첫날】"
     p "학교가 이렇게 낯설었나."
     p "군대 가기 전에는 매일 오던 곳인데."
 
-    show friend_sheet at sheet_fit
+    show friend_fullbody_joy at fullbody_fit
     with dissolve
     friend "야. 설마 진짜 혼자 다니려고 했어?"
     p "...하린?"
@@ -21,14 +21,14 @@ label common_day1:
             p "복학 서류부터 처리해야 해."
             friend "하여튼 변한 게 없네. 끝나면 연락해."
 
-    hide friend_sheet
+    hide friend_fullbody_joy
     jump common_day2
 
 label common_day2:
-    scene black
+    scene bg university_common
     narrator "【화요일 / 학과사무실】"
 
-    show older_sheet at sheet_fit
+    show older_fullbody_joy at fullbody_fit
     with dissolve
     older "복학 처리 서류... 여기 확인해 주세요."
     p "감사합니다. 조교님이시죠?"
@@ -52,14 +52,14 @@ label common_day2:
             p "혹시 제가 불편하게 했어요?"
             older "아니에요. 그런 건 아닌데..."
 
-    hide older_sheet
+    hide older_fullbody_joy
     jump common_day3
 
 label common_day3:
-    scene black
+    scene bg university_common
     narrator "【수요일 / 강의동 뒤편】"
 
-    show junior_sheet at sheet_fit
+    show junior_fullbody_joy at fullbody_fit
     with dissolve
     junior "선배."
     p "...나 부른 거야?"
@@ -83,19 +83,19 @@ label common_day3:
             p "근데 네가 여기 올 줄은 몰랐다."
             junior "저는 알고 있었어요. 선배가 여기 다니는 거."
 
-    hide junior_sheet
+    hide junior_fullbody_joy
     jump common_day4
 
 label common_day4:
-    scene black
+    scene bg university_common
     narrator "【목요일 / 빈 세미나실】"
 
-    show older_sheet at sheet_fit
+    show older_fullbody_joy at fullbody_fit
     with dissolve
     older "아, 맞다. 교수님이 찾으세요."
     p "저를요? 지금요?"
     older "네. 아마... 지금이요."
-    hide older_sheet
+    hide older_fullbody_joy
 
     narrator "교수실까지 올라갔지만 교수는 영문을 몰랐다."
     prof "내가 자네를 왜 찾아?"
@@ -116,10 +116,10 @@ label common_day4:
     jump common_day5
 
 label common_day5:
-    scene black
+    scene bg university_common
     narrator "【금요일 / 하린과 귀가 중】"
 
-    show friend_sheet at sheet_fit
+    show friend_fullbody_joy at fullbody_fit
     with dissolve
     friend "아 맞다. 지난번에 아는 언니 따라갔다가 다른 학교 선배 하나 알게 됐거든."
     p "남자?"
@@ -137,14 +137,14 @@ label common_day5:
             p "네가 누구를 만나든 네 자유지."
             friend "그렇긴 하지."
 
-    hide friend_sheet
+    hide friend_fullbody_joy
     jump common_day6
 
 label common_day6:
-    scene black
+    scene bg university_common
     narrator "【다음 주 / 도서관】"
 
-    show junior_sheet at sheet_fit
+    show junior_fullbody_joy at fullbody_fit
     with dissolve
     junior "선배. 오늘 저녁 시간 있으세요?"
     p "왜?"
@@ -164,11 +164,11 @@ label common_day6:
             p "정해지면 연락할게."
             junior "...알겠어요."
 
-    hide junior_sheet
+    hide junior_fullbody_joy
     jump common_day7
 
 label common_day7:
-    scene black
+    scene bg university_common
     narrator "【축제 준비 주간】"
     narrator "셋과 보내는 시간이 겹치기 시작했다."
 
@@ -191,7 +191,7 @@ label common_day7:
     jump route_selection
 
 label route_selection:
-    scene black
+    scene bg university_common
     narrator "공통 루트 종료"
     narrator "서윤 호감도: [older_affection] / 하린 호감도: [friend_affection] / 유나 호감도: [junior_affection]"
     narrator "호감도 20 이상인 히로인의 개별 루트에 진입할 수 있습니다."
@@ -213,7 +213,7 @@ label route_selection:
             jump neutral_ending
 
 label neutral_ending:
-    scene black
+    scene bg university_common
     narrator "나는 결국 아무에게도 마음을 전하지 않았다."
     narrator "복학 첫 학기는 그렇게 평범하게 흘러갔다."
     centered "NORMAL END\n아무 말도 하지 않은 가을"

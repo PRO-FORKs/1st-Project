@@ -1,5 +1,5 @@
 label junior_route_start:
-    scene black
+    scene bg university_common
     show junior_sheet at sheet_fit
     with fade
 
@@ -38,7 +38,7 @@ label junior_route_start:
         jump junior_bad
 
 label junior_happy:
-    scene black
+    scene bg university_common
     show junior_sheet at sheet_fit
     narrator "도서관 폐관 방송이 나온 뒤."
     junior "예전에는 선배를 따라오기만 했어요."

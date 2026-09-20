@@ -1,5 +1,5 @@
 label friend_route_start:
-    scene black
+    scene bg university_common
     show friend_sheet at sheet_fit
     with fade
 
@@ -37,7 +37,7 @@ label friend_route_start:
         jump friend_bad
 
 label friend_happy:
-    scene black
+    scene bg university_common
     show friend_sheet at sheet_fit
     narrator "축제가 끝난 늦은 밤."
     friend "군대 가기 전에도 이 말 기다렸는데."

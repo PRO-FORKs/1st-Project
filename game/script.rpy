@@ -1,7 +1,7 @@
 # Main entry point
 
 label start:
-    scene black
+    scene bg university_common
     with fade
 
     centered "복학생의 가을\nPrototype v0.1.3"

@@ -1,5 +1,5 @@
 label older_route_start:
-    scene black
+    scene bg university_common
     show older_sheet at sheet_fit
     with fade
 
@@ -37,7 +37,7 @@ label older_route_start:
         jump older_bad
 
 label older_happy:
-    scene black
+    scene bg university_common
     show older_sheet at sheet_fit
     narrator "학교 근처 편의점 앞. 늦은 저녁."
     older "저 오늘은 안 도망갔어요."
