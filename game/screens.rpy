@@ -7,6 +7,23 @@
 
 init offset = -1
 
+init python:
+    def choice_face_for_caption(caption):
+        if "서윤" in caption:
+            return "images/ui/choice_seoyun.png"
+        if "하린" in caption:
+            return "images/ui/choice_harin.png"
+        if "유나" in caption:
+            return "images/ui/choice_yuna.png"
+        return None
+
+
+transform choice_face_pop:
+    on hover:
+        zoom 1.08
+    on idle:
+        zoom 1.0
+
 # ------------------------------------------------------------------------------
 # Dialogue
 # ------------------------------------------------------------------------------
@@ -59,24 +76,109 @@ screen input(prompt):
 screen choice(items):
     modal True
 
+    add Solid("#07050444")
+
     vbox:
         xalign 0.5
-        yalign 0.65
-        xsize 900
-        spacing 14
+        yalign 0.62
+        xsize 940
+        spacing 12
 
         for i in items:
-            textbutton i.caption:
+            $ choice_face = choice_face_for_caption(i.caption)
+
+            button:
                 action i.action
                 xfill True
-                xpadding 30
-                ypadding 18
-                background Solid("#2d241de6")
-                hover_background Solid("#6f4a3a")
-                text_size 25
-                text_color "#fff7ed"
-                text_hover_color "#ffe0c2"
+                ysize 78
+                background Solid("#16110de8")
+                hover_background Solid("#7a4b3add")
+
+                fixed:
+                    xfill True
+                    yfill True
+
+                    add Solid("#d88a5a"):
+                        xalign 0.0
+                        yalign 0.5
+                        xysize (5, 78)
+
+                    text i.caption:
+                        xalign 0.5
+                        yalign 0.5
+                        xmaximum 720
+                        size 26
+                        color "#fff7ed"
+                        text_align 0.5
+                        outlines [(1, "#140d09aa", 0, 1)]
+
+                    if choice_face:
+                        frame:
+                            xalign 0.965
+                            yalign 0.5
+                            xysize (62, 62)
+                            background Solid("#fff2e6")
+                            padding (3, 3)
+
+                            add choice_face at choice_face_pop:
+                                xysize (56, 56)
+
+
+screen chapter_transition(title, subtitle=""):
+    modal True
+
+    add "images/bg_university_morning.png":
+        xysize (1280, 720)
+
+    add Solid("#080504aa")
+
+    frame:
+        xalign 0.5
+        yalign 0.48
+        xsize 760
+        background Solid("#15100ce8")
+        padding (54, 44)
+
+        vbox:
+            xalign 0.5
+            spacing 18
+
+            text "NEXT CHAPTER":
+                xalign 0.5
+                size 20
+                color "#e9a26d"
+                bold True
+
+            text title:
+                xalign 0.5
+                xmaximum 640
+                size 44
+                color "#fff7ed"
+                text_align 0.5
+                outlines [(2, "#2d160faa", 0, 2)]
+
+            if subtitle:
+                text subtitle:
+                    xalign 0.5
+                    xmaximum 600
+                    size 22
+                    color "#eac8b0"
+                    text_align 0.5
+                    line_spacing 5
+
+            null height 16
+
+            textbutton _("다음 챕터로 진행"):
+                action Return()
+                xalign 0.5
+                xsize 340
+                ysize 58
+                background Solid("#b85f4a")
+                hover_background Solid("#df7a56")
+                text_size 24
+                text_color "#fffaf4"
                 text_xalign 0.5
+                text_yalign 0.5
 
 
 # ------------------------------------------------------------------------------
@@ -86,62 +188,62 @@ screen choice(items):
 screen main_menu():
     tag menu
 
-    add "images/bg_university_morning.png":
+    add "images/main_menu.png":
         xysize (1280, 720)
 
-    add Solid("#120f0c55")
+    add Solid("#0a060477")
 
     vbox:
         xalign 0.68
-        yalign 0.22
-        spacing 8
+        yalign 0.2
+        spacing 10
 
         text "복학생의 가을":
             xalign 0.5
-            size 58
+            size 64
             color "#fff7ed"
-            outlines [(2, "#2f1f1880", 0, 2)]
+            outlines [(3, "#2f1f18aa", 0, 3)]
 
         text "Campus Life Prototype":
             xalign 0.5
-            size 22
-            color "#f7d7bd"
+            size 24
+            color "#ffd6ba"
             outlines [(1, "#2f1f1880", 0, 1)]
 
     frame:
-        xalign 0.08
-        yalign 0.55
-        xsize 360
-        background Solid("#17120ecc")
-        padding (34, 34)
+        xalign 0.09
+        yalign 0.56
+        xsize 400
+        background Solid("#130f0be8")
+        padding (38, 36)
 
         vbox:
             xalign 0.5
-            spacing 14
+            spacing 12
 
             text "[config.name]":
                 xalign 0.5
-                size 30
+                size 32
                 color "#fff7ed"
                 text_align 0.5
                 outlines [(1, "#3b241a99", 0, 1)]
 
             text "다시 돌아온 캠퍼스에서 시작되는 세 갈래의 가을":
                 xalign 0.5
-                xsize 285
-                size 17
+                xsize 310
+                size 18
                 color "#e7c7ad"
                 text_align 0.5
                 line_spacing 4
 
-            null height 12
+            null height 16
 
             textbutton _("게임 시작"):
                 action Start()
                 xalign 0.5
-                xsize 292
-                ysize 60
-                background Solid("#b85f4acc")
+                xsize 316
+                ysize 62
+                background Solid("#b85f4a")
                 hover_background Solid("#d97757")
                 text_size 26
                 text_color "#fffaf4"
@@ -151,9 +253,9 @@ screen main_menu():
             textbutton _("불러오기"):
                 action ShowMenu("load")
                 xalign 0.5
-                xsize 292
+                xsize 316
                 ysize 56
-                background Solid("#2d241dcc")
+                background Solid("#2a211bcc")
                 hover_background Solid("#5f4638")
                 text_size 24
                 text_color "#fff7ed"
@@ -163,9 +265,9 @@ screen main_menu():
             textbutton _("종료"):
                 action Quit(confirm=False)
                 xalign 0.5
-                xsize 292
+                xsize 316
                 ysize 56
-                background Solid("#2d241dcc")
+                background Solid("#2a211bcc")
                 hover_background Solid("#5f4638")
                 text_size 24
                 text_color "#fff7ed"

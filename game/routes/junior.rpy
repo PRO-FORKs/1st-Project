@@ -39,8 +39,10 @@ label junior_route_start:
             junior "...알겠어요. 제가 알아서 할게요."
 
     if junior_reassurance >= 4:
+        call screen chapter_transition("유나 해피 엔딩", "따라가는 사람이 아니라")
         jump junior_happy
     else:
+        call screen chapter_transition("유나 배드 엔딩", "나만 보면 되잖아요")
         jump junior_bad
 
 label junior_happy:

@@ -43,6 +43,9 @@ image junior fullbody_hurt = "images/heroine3/fullbody_hurt.png"
 image junior fullbody_jealousy = "images/heroine3/fullbody_jealousy.png"
 image junior fullbody_anger = "images/heroine3/fullbody_anger.png"
 image bg university_common = "images/bg_university_morning.png"
+image bg event_harin_commute = "images/events/event_harin_commute.png"
+image bg event_seoyun_office = "images/events/event_seoyun_office.png"
+image bg event_yuna_classroom = "images/events/event_yuna_classroom.png"
 
 transform sheet_fit:
     xalign 0.5

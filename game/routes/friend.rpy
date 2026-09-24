@@ -38,8 +38,10 @@ label friend_route_start:
             friend "응. 그럼 다녀올게."
 
     if friend_courage >= 4:
+        call screen chapter_transition("하린 해피 엔딩", "친구 다음의 이름")
         jump friend_happy
     else:
+        call screen chapter_transition("하린 배드 엔딩", "보내지 못한 메시지")
         jump friend_bad
 
 label friend_happy:
