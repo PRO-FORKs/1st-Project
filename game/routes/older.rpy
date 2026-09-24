@@ -39,8 +39,10 @@ label older_route_start:
             older "네."
 
     if older_trust >= 4:
+        call screen chapter_transition("서윤 해피 엔딩", "도망가지 않는 연습")
         jump older_happy
     else:
+        call screen chapter_transition("서윤 배드 엔딩", "잠수")
         jump older_bad
 
 label older_happy:

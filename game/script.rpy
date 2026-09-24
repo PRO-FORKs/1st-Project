@@ -9,4 +9,5 @@ label start:
     narrator "군 전역 후 복학한 스물셋의 가을."
     narrator "끊겨 있던 학교생활은 세 사람과 다시 이어지기 시작한다."
 
+    call screen chapter_transition("월요일 / 복학 첫날", "정문으로 이어지는 등교길")
     jump common_day1

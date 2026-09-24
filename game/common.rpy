@@ -1,11 +1,13 @@
 label common_day1:
-    scene bg university_common
+    scene bg event_harin_commute
+    with fade
+
     narrator "【월요일 / 복학 첫날】"
     p "학교가 이렇게 낯설었나."
     p "군대 가기 전에는 매일 오던 곳인데."
 
-    show friend fullbody_default at fullbody_fit
-    with dissolve
+    narrator "정문으로 이어지는 등교길은 기억보다 넓고, 사람들의 걸음은 기억보다 빨랐다."
+    narrator "그 틈에서 누군가 자연스럽게 내 보폭에 맞춰 걸어왔다."
     friend "야. 설마 진짜 혼자 다니려고 했어?"
     p "...하린?"
     friend "복학생이라고 벌써부터 분위기 잡지 마. 밥부터 먹자."
@@ -21,15 +23,17 @@ label common_day1:
             p "복학 서류부터 처리해야 해."
             friend "하여튼 변한 게 없네. 끝나면 연락해."
 
-    hide friend
+    call screen chapter_transition("화요일 / 학과사무실", "파티션 너머에서 마주친 조교")
     jump common_day2
 
 label common_day2:
-    scene bg university_common
+    scene bg event_seoyun_office
+    with fade
+
     narrator "【화요일 / 학과사무실】"
 
-    show older fullbody_default at fullbody_fit
-    with dissolve
+    narrator "파티션 너머로 내민 복학 서류가 잠깐 허공에 머물렀다."
+    narrator "모니터를 보던 조교가 고개를 돌리자 은색 포니테일과 동그란 안경이 먼저 눈에 들어왔다."
     older "복학 처리 서류... 여기 확인해 주세요."
     p "감사합니다. 조교님이시죠?"
     older "네. 서윤이라고 합니다."
@@ -52,15 +56,17 @@ label common_day2:
             p "혹시 제가 불편하게 했어요?"
             older "아니에요. 그런 건 아닌데..."
 
-    hide older
+    call screen chapter_transition("수요일 / 강의 후 강의실 앞", "초저녁 복도에서 기다리던 후배")
     jump common_day3
 
 label common_day3:
-    scene bg university_common
-    narrator "【수요일 / 강의동 뒤편】"
+    scene bg event_yuna_classroom
+    with fade
 
-    show junior fullbody_default at fullbody_fit
-    with dissolve
+    narrator "【수요일 / 강의 후 강의실 앞】"
+
+    narrator "마지막 강의가 끝나자 복도에는 초저녁의 어둠이 천천히 내려앉고 있었다."
+    narrator "강의실 문을 나서자 가로등 불빛 옆에 서 있던 누군가가 조심스럽게 고개를 들었다."
     junior "선배."
     p "...나 부른 거야?"
     junior "네. 저 기억 안 나세요?"
@@ -83,7 +89,7 @@ label common_day3:
             p "근데 네가 여기 올 줄은 몰랐다."
             junior "저는 알고 있었어요. 선배가 여기 다니는 거."
 
-    hide junior
+    call screen chapter_transition("목요일 / 빈 세미나실", "서윤의 이상한 거짓말")
     jump common_day4
 
 label common_day4:
@@ -113,6 +119,7 @@ label common_day4:
             $ older_affection += 5
             p "이건 좀 너무한데."
 
+    call screen chapter_transition("금요일 / 하린과 귀가 중", "친구라는 말의 거리")
     jump common_day5
 
 label common_day5:
@@ -138,6 +145,7 @@ label common_day5:
             friend "그렇긴 하지."
 
     hide friend
+    call screen chapter_transition("다음 주 / 도서관", "유나가 꺼낸 저녁 약속")
     jump common_day6
 
 label common_day6:
@@ -165,6 +173,7 @@ label common_day6:
             junior "...알겠어요."
 
     hide junior
+    call screen chapter_transition("축제 준비 주간", "겹치기 시작한 세 사람의 시간")
     jump common_day7
 
 label common_day7:
@@ -188,6 +197,7 @@ label common_day7:
             $ junior_reassurance += 1
             p "오늘은 안 미룰게. 같이 하자."
 
+    call screen chapter_transition("공통 루트 종료", "이제 누구에게 마음을 향할지 정할 시간")
     jump route_selection
 
 label route_selection:
@@ -199,17 +209,21 @@ label route_selection:
     menu:
         "서윤과 더 가까워진다" if older_affection >= 20:
             $ selected_route = "older"
+            call screen chapter_transition("서윤 루트", "도망가려는 사람에게 다가가는 법")
             jump older_route_start
 
         "하린과 더 가까워진다" if friend_affection >= 20:
             $ selected_route = "friend"
+            call screen chapter_transition("하린 루트", "친구 다음의 이름")
             jump friend_route_start
 
         "유나와 더 가까워진다" if junior_affection >= 20:
             $ selected_route = "junior"
+            call screen chapter_transition("유나 루트", "오래 기다린 마음")
             jump junior_route_start
 
         "누구와도 관계를 정하지 않는다":
+            call screen chapter_transition("노멀 엔딩", "아무 말도 하지 않은 가을")
             jump neutral_ending
 
 label neutral_ending:
